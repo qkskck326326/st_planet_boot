@@ -30,7 +30,7 @@ public class UserService {
 
     public List<Customer> getAllUsers() {
         return userMapper.findAll();
-    }
+    } //
 
     public Customer getUserByEmail(String id) {
         return userMapper.findByEmail(id);

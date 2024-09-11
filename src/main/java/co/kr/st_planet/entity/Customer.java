@@ -16,7 +16,7 @@ public class Customer {
     private String nickname; // Not Null
     private Timestamp registerTime; // Not Null, Default: CURRENT_TIMESTAMP
     private String profileImageUrl;
-    private char loginOk;    // Default: 'Y', Not Null, Y/N
+    private char loginOk;// Default: 'Y', Not Null, Y/N
     private String snsAccessToken;
     private char unsubscribeStatus;
 }
