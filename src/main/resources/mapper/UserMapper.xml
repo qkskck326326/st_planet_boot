@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.kr.st_planet.mapper.UserMapper">
+    <insert id="insertCustomer" parameterType="co.kr.st_planet.entity.Customer">
+        INSERT INTO customer (email, password, name, birth, phone_number, address, nickname, register_time, profile_image_url)
+        VALUES (#{email}, #{password}, #{name}, #{birth}, #{phoneNumber}, #{address}, #{nickname}, CURRENT_TIMESTAMP, #{profileImageUrl})
+    </insert>
+
+    <select id="findAll" resultType="co.kr.st_planet.entity.Customer">
+        SELECT *
+        FROM customer
+    </select>
+
+    <select id="findByEmail" resultType="co.kr.st_planet.entity.Customer">
+        SELECT email, name, password
+        FROM customer
+        WHERE email = #{email}
+    </select>
+
+    <select id="findByUsername" resultType="co.kr.st_planet.entity.Customer">
+        SELECT email, username, password
+        FROM customer
+        WHERE name = #{name}
+    </select>
+</mapper>

@@ -1,0 +1,66 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.3'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'co.kr'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring Boot 및 Spring Security 관련 의존성
+	implementation 'org.springframework.boot:spring-boot-starter-security:3.1.2' // Spring Security 기본 기능 제공
+	implementation 'org.springframework.security:spring-security-web' // Spring Security 웹 보안 구성
+	implementation 'org.springframework.security:spring-security-config' // Spring Security 설정 지원
+	implementation 'org.springframework.boot:spring-boot-starter-web' // Spring MVC 및 RESTful 웹 서비스 지원
+
+	// 추가된 서블릿 API 의존성 ********************
+	implementation 'jakarta.servlet:jakarta.servlet-api:5.0.0' // Jakarta 서블릿 API
+
+	// MyBatis 관련 의존성
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3' // MyBatis와 Spring 통합 지원
+
+	// JSON 처리 관련 의존성
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2' // JSON 직렬화 및 역직렬화 지원
+
+	// JWT (JSON Web Token) 처리 관련 의존성
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5' // JWT API 기본 기능 제공
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5' // JWT 구현체 제공
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5' // JWT와 Jackson 통합 지원
+
+	// Java 어노테이션 관련 의존성
+	implementation 'javax.annotation:javax.annotation-api:1.3.2' // @PostConstruct 및 기타 어노테이션 제공
+
+	// Lombok 관련 의존성 (컴파일 시 코드 자동 생성)
+	compileOnly 'org.projectlombok:lombok' // Lombok 사용 시 필요한 의존성
+	annotationProcessor 'org.projectlombok:lombok' // Lombok 어노테이션 처리기
+
+	// MySQL 데이터베이스 연결 관련 의존성
+	runtimeOnly 'com.mysql:mysql-connector-j' // MySQL 데이터베이스와의 연결 지원
+
+	// 테스트 관련 의존성
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' // Spring Boot 테스트 지원
+	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3' // MyBatis 테스트 지원
+	testImplementation 'org.springframework.security:spring-security-test' // Spring Security 테스트 지원
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher' // JUnit 플랫폼 런처 (테스트 실행기)
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
