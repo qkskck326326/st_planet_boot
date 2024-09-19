@@ -1,7 +1,7 @@
-package co.kr.st_planet.controller;
+package co.kr.st_planet.security.controller;
 
-import co.kr.st_planet.entity.Customer;
-import co.kr.st_planet.service.UserService;
+import co.kr.st_planet.security.entity.Customer;
+import co.kr.st_planet.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;

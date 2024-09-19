@@ -1,6 +1,6 @@
-package co.kr.st_planet.mapper;
+package co.kr.st_planet.security.mapper;
 
-import co.kr.st_planet.entity.Customer;
+import co.kr.st_planet.security.entity.Customer;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
