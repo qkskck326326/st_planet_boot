@@ -1,4 +1,4 @@
-package co.kr.st_planet.entity;
+package co.kr.st_planet.security.entity;
 
 import lombok.Data;
 
