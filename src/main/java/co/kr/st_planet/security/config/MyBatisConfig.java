@@ -1,4 +1,4 @@
-package co.kr.st_planet.config;
+package co.kr.st_planet.security.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
