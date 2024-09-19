@@ -2,7 +2,7 @@ package co.kr.st_planet.security.filter;
 
 import co.kr.st_planet.security.JwtAuthenticationToken;
 import co.kr.st_planet.security.JwtTokenProvider;
-import co.kr.st_planet.service.CustomUserDetailsService;
+import co.kr.st_planet.security.service.CustomUserDetailsService;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

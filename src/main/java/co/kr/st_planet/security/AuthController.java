@@ -1,7 +1,7 @@
 package co.kr.st_planet.security;
 
-import co.kr.st_planet.entity.FirstLoginTokenSet;
-import co.kr.st_planet.service.CustomUserDetailsService;
+import co.kr.st_planet.security.entity.FirstLoginTokenSet;
+import co.kr.st_planet.security.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
