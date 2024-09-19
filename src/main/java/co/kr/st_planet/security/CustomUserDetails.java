@@ -1,6 +1,6 @@
 package co.kr.st_planet.security;
 
-import co.kr.st_planet.entity.Customer;
+import co.kr.st_planet.security.entity.Customer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

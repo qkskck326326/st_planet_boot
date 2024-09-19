@@ -2,7 +2,7 @@ package co.kr.st_planet.security.config;
 
 import co.kr.st_planet.security.JwtTokenProvider;
 import co.kr.st_planet.security.filter.JwtAuthenticationFilter;
-import co.kr.st_planet.service.CustomUserDetailsService;
+import co.kr.st_planet.security.service.CustomUserDetailsService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

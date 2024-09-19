@@ -1,14 +1,12 @@
-package co.kr.st_planet.service;
+package co.kr.st_planet.security.service;
 
-import co.kr.st_planet.entity.Customer;
-import co.kr.st_planet.mapper.UserMapper;
+import co.kr.st_planet.security.entity.Customer;
+import co.kr.st_planet.security.mapper.UserMapper;
 import co.kr.st_planet.security.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.stereotype.Service;
 
 @Service
