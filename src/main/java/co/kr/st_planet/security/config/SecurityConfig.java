@@ -1,4 +1,4 @@
-package co.kr.st_planet.config;
+package co.kr.st_planet.security.config;
 
 import co.kr.st_planet.security.JwtTokenProvider;
 import co.kr.st_planet.security.filter.JwtAuthenticationFilter;
