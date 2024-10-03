@@ -40,4 +40,15 @@ public class UserService {
         return userMapper.findByUsername(name);
     }
 
+    public void recordLoginLog(String email, String ip) {
+        userMapper.recordLoginLog(email, ip);
+    }
+
+    public String checkLastIp(String email) {
+        return userMapper.checkLastIp(email);
+    }
+
+    public void initializeCustomerIp(String email) {
+        userMapper.initializeCustomerIp(email);
+    }
 }// class
