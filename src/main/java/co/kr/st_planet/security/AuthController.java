@@ -107,7 +107,8 @@ public class AuthController {
             String refreshToken = authorizationHeader.substring(7);
 
             if (!jwtTokenProvider.validateToken(refreshToken)) {
-                return new ResponseEntity<>(Map.of("error", "Refresh token is invalid or expired"), HttpStatus.FORBIDDEN);
+                // 403 + 에러메세지 "InvalidRefreshToken"
+                return new ResponseEntity<>(Map.of("error", "InvalidRefreshToken"), HttpStatus.FORBIDDEN);
             }
 
             //////// 마지막 로그인 아이피 확인, 불일치시 특정 오류 반환
