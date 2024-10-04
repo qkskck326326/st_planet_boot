@@ -4,6 +4,7 @@ import co.kr.st_planet.security.entity.Customer;
 import co.kr.st_planet.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -24,15 +25,21 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     @PutMapping("/register")
-    public String register(@RequestBody Customer customer) {
+    public ResponseEntity<String> register(@RequestBody Customer customer) {
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        customer.setProvider("planet");
+        customer.setLoginOk('Y');
+        customer.setCustomerType('0');
+        System.out.println(customer);
         try {
             Customer newUser = userService.registerCustomer(customer);
-            return "User registered successfully: " + newUser.getEmail();
+            return ResponseEntity.ok("User registered successfully: " + newUser.getEmail());
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Failed to register user: " + e.getMessage());
         }
     }
+
 
     @GetMapping("/getAll")
     public List<Customer> getAllUsers(){
