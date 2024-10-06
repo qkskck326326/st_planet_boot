@@ -53,7 +53,7 @@ public class JwtTokenProvider {
     public String createNewRefreshToken(String token){
         String email = getUserEmailFromToken(token);
         Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + 60 * 1000);
+        Date expiryDate = new Date(now.getTime() + 60 * 60 * 1000);
         return Jwts.builder()
                 .setSubject(email)
                 .setIssuedAt(now)
