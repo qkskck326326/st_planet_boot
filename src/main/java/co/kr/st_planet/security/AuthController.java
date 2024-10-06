@@ -151,7 +151,7 @@ public class AuthController {
             String email = jwtTokenProvider.getUserEmailFromToken(refreshToken);
             String lastIp = userService.checkLastIp(email);
 
-            if (requestIp.equals(lastIp) || lastIp != null){
+            if (!(requestIp.equals(lastIp) || lastIp != null)){
                 throw new ResponseStatusException(HttpStatus.FORBIDDEN, "ip_error");
             }
 
@@ -164,7 +164,7 @@ public class AuthController {
 
             return new ResponseEntity<>(responseBody, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(Map.of("error", "An error occurred while issuing new access token"), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(Map.of("error", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
