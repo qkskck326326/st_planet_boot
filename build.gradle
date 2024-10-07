@@ -30,6 +30,8 @@ dependencies {
 	implementation 'org.springframework.security:spring-security-config' // Spring Security 설정 지원
 	implementation 'org.springframework.boot:spring-boot-starter-web' // Spring MVC 및 RESTful 웹 서비스 지원
 
+	implementation 'jakarta.persistence:jakarta.persistence-api'
+	
 	// 추가된 서블릿 API 의존성 ********************
 	implementation 'jakarta.servlet:jakarta.servlet-api:5.0.0' // Jakarta 서블릿 API
 
