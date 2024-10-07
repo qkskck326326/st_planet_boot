@@ -41,7 +41,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // CSRF 비활성화
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // 세션 사용하지 않음
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/customer/**", "api/customer/register").permitAll() // 인증 없이 접근 가능 경로
+                        .requestMatchers("/api/auth/login", "/api/customer/**", "api/customer/register").permitAll() // 인증 없이 접근 가능 경로
                         .anyRequest().authenticated() // 그 외의 모든 요청은 인증 필요
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider, customUserDetailsService), UsernamePasswordAuthenticationFilter.class)
