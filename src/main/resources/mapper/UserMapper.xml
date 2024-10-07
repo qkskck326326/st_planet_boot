@@ -5,9 +5,51 @@
 
 <mapper namespace="co.kr.st_planet.security.mapper.UserMapper">
     <insert id="insertCustomer" parameterType="co.kr.st_planet.security.entity.Customer">
-        INSERT INTO customer (email, password, name, birth, phone_number, address, nickname, register_time, profile_image_url)
-        VALUES (#{email}, #{password}, #{name}, #{birth}, #{phoneNumber}, #{address}, #{nickname}, CURRENT_TIMESTAMP, #{profileImageUrl})
+        INSERT INTO customer (
+            email, provider, password, name, birth, phone_number, address, nickname,
+            register_time, profile_image_url, customer_type, login_ok, sns_access_token, unsubscribe_status
+        )
+        VALUES (
+                   #{email}, #{provider}, #{password}, #{name}, #{birth}, #{phoneNumber}, #{address}, #{nickname},
+                   CURRENT_TIMESTAMP, #{profileImageUrl}, #{customerType}, #{loginOk}, #{snsAccessToken}, #{unsubscribeStatus}
+               )
     </insert>
+
+    <insert id="recordLoginLog" parameterType="co.kr.st_planet.security.entity.Customer">
+        INSERT INTO customer_login_log (
+            email, ip
+        )
+        VALUES (
+                   #{email}, #{ip}
+               )
+    </insert>
+
+    <insert id="recordRefreshLog" parameterType="co.kr.st_planet.security.entity.Customer">
+        INSERT INTO customer_login_log (
+            email, ip
+        )
+        VALUES (
+                   #{email}, #{ip}
+               )
+    </insert>
+
+    <select id="checkLastIp" resultType="String">
+        SELECT ip AS last_login_ip
+        FROM customer_login_log
+        WHERE email = #{email}
+        ORDER BY last_refresh DESC
+            LIMIT 1;
+    </select>
+
+    <update id="initializeCustomerIp">
+        UPDATE customer
+        SET last_login_ip = NULL
+        WHERE email = #{email}
+    </update>
+
+
+
+
 
     <select id="findAll" resultType="co.kr.st_planet.security.entity.Customer">
         SELECT *

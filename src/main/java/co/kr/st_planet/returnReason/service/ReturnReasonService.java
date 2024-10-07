@@ -1,5 +1,6 @@
 package co.kr.st_planet.returnReason.service;
 
+import co.kr.st_planet.returnReason.mapper.ReturnReasonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,5 +8,5 @@ import org.springframework.stereotype.Service;
 public class ReturnReasonService {
 
     @Autowired
-    private ReturnReasonService returnReasonService;
+    private ReturnReasonMapper returnReasonMapper;
 }
