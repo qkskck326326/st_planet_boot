@@ -13,4 +13,10 @@ public interface UserMapper {
     List<Customer> findAll();
     Customer findByEmail(String email);
     Customer findByUsername(String username);
+
+    void recordLoginLog(String email, String ip);
+
+    String checkLastIp(String email);
+
+    void initializeCustomerIp(String email);
 }

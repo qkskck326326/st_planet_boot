@@ -50,6 +50,18 @@ public class JwtTokenProvider {
                 .compact();
     }
 
+    public String createNewRefreshToken(String token){
+        String email = getUserEmailFromToken(token);
+        Date now = new Date();
+        Date expiryDate = new Date(now.getTime() + 60 * 60 * 1000);
+        return Jwts.builder()
+                .setSubject(email)
+                .setIssuedAt(now)
+                .setExpiration(expiryDate)
+                .signWith(key, SignatureAlgorithm.HS256)
+                .compact();
+    }
+
     public String createRefreshToken(Authentication authentication) {
         CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
         Date now = new Date();
