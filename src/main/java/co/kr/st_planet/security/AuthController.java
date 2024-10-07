@@ -47,10 +47,10 @@ public class AuthController {
         try {
             // 이메일과 비밀번호 유효성 검사
             if (email == null || email.isEmpty()) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email cannot be empty");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "이메일을 입력해 주세요");
             }
             if (password == null || password.isEmpty()) {
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Password cannot be empty");
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "비밀번호를 입력해 주세요");
             }
 
             // 인증 처리
@@ -73,7 +73,7 @@ public class AuthController {
             return ResponseEntity.ok(tokenSet);
 
         } catch (AuthenticationException e) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid email or password", e);
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "이메일과 비밀번호가 일치하지 않습니다.", e);
         }
     }
 
